@@ -1,0 +1,36 @@
+<!-- {%extends "home.html"} -->
+{%block content%}
+<form action="" method="POST" enctype="multipart/form-data">
+    {%csrf_token%}
+    <div>
+        <label for="">BLOG NAME</label>
+        <input type="text" name="Blog_title">
+        <br><br>
+        <label for="">AUTHOR NAME</label>
+        <input value="{{request.user.username}}" type="text" name="Author_name" readonly>
+        <br><br>
+        <label for="">PUBLISH DATE</label>
+        <input type="date" name="Publish_date">
+        <br><br>
+        <label for="category">CATEGORY</label>
+
+        <input type="text" name="Blog_category">
+
+
+        <br><br>
+        <label for="">CAPTION</label>
+        <!-- <input type="text" name="Blog_caption"> -->
+        <textarea class="caption" name="Blog_caption" id="" cols="30" rows="10"></textarea>
+        <br><br>
+        <label for="">BLOG IMAGE</label>
+        <input type="file" name="Blog_img">
+        <br><br>
+        <button type="submit">ADD BLOG</button>
+        <br><br>
+    </div>
+    {% for message in messages %}
+    <h1 style="color: brown;">{{ message}}</h1>
+    {% endfor%}
+
+</form>
+{%endblock%}
